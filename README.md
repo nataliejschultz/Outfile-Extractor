@@ -13,8 +13,8 @@ CHEM 5630 repository
   as part of my research. The file was generated using gaussian on a quantum model that I
   created in avogadro/VMD.
 * n5_no3_nbo_example.txt
-  *This outputted text file lists the interactions between units of the molecular model. It only lists interactions that have an energy value greater than 10kcal/mol. This is very useful when trying to find orbitals that
+  * This outputted text file lists the interactions between units of the molecular model. It only lists interactions that have an energy value greater than 10kcal/mol. This is very useful when trying to find orbitals that
   may take part in charge transfer.
 * n5_no3_nbo_example.csv
-  *This outputted csv extracts the Mulliken, Lowdin, and Natural charge of each atom in the model. It
-  also lists the overall of each type of charge. At the bottom, the total charge of each unit is listed. 
+  * This outputted csv extracts the Mulliken, Lowdin, and Natural charge of each atom in the model. It
+  also lists the overall of each type of charge. At the bottom, the total charge of each unit is listed.
