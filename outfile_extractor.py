@@ -1,10 +1,11 @@
 #################################################################################################################################
 ################################ THIS PROGRAM ALLOWS YOU TO EXTRACT SPECIFIC DATA ###############################################
 ################################ FROM GAUSSIAN .OUT FILES, INCLUDING MULLIKEN,    ###############################################
-################################ LOWDIN, NATURAL CHARGES, ATOM NUMBER, AND        ###############################################
-################################ CHARGE UNIT TOTAL VALUE. JUST MODIFY MAIN_DIR    ###############################################
-################################ TO BE THE GREATER DIRECTORY WHERE YOUR .OUT      ###############################################
-################################ FILES ARE LOCATED.                               ###############################################
+################################ LOWDIN, NATURAL CHARGES, ATOM NUMBER,            ###############################################
+################################ CHARGE UNIT TOTAL VALUE, AND INTERACTIONS BETWEEN     ###############################################
+################################ MOLECULE UNITS. JUST MODIFY MAIN_DIR TO BE THE       ###############################################
+################################ GREATER DIRECTORY WHERE YOUR .OUTFILES ARE LOCATED.  ###############################################
+############################### Author: Natalie Schultz
 #################################################################################################################################
 import os
 
@@ -31,7 +32,7 @@ def format_natural_line(line):
     return split_line[0:3]
 
 #directory where the nbo output "nbo.out" files are
-main_dir ="/Users/user/Desktop/single_test/"
+main_dir ="/Users/user/Desktop/pythonfolder/git_projects/final_project/CHEM5630"
 
 #empty list of directories
 directories = []
@@ -67,6 +68,8 @@ for item in directories:
     with open(path,"r") as file:
         contents = file.readlines()
         file.close()
+        data_units = False
+        numatoms = ''
 
     ### this for loop takes the number of atoms from the file and sets it as a float variable called numatoms
         for linenum, line in enumerate(contents):
@@ -74,11 +77,13 @@ for item in directories:
 
 
             #finds string in file
-            if "NAtoms=   " in line:
+            if "NAtoms=" in line:
+                print('++++')
+                print(line)
                 #splits line on space
                 separate = line.split(" ")
                 #temporary value is the fifth item in the split line
-                temp = (separate[4])
+                temp = (separate[3])
                 #numatoms is the number of atoms in the file.
                 numatoms = float(temp)
 
@@ -142,7 +147,7 @@ for item in directories:
                 temp_path.pop(-1)
                 newpath = "/".join(temp_path)
                 with open(os.path.join(newpath, jobname +".csv"), "w") as csv:
-#                     output_file = os.path.join(newpath, jobname + ".csv")
+                    output_file = os.path.join(newpath, jobname + ".csv")
                     csv.writelines(charges)
                 csv.close()
 
@@ -175,8 +180,6 @@ for item in directories:
     #                             textfile.append(energy_line)
                         except Exception:
                             pass
-                    print("+++++")
-                    print(textfile)
 
 
             if " Natural Bond Orbitals (Summary):" in line:
