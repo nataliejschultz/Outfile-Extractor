@@ -1,5 +1,4 @@
-# CHEM5630
-CHEM 5630 repository
+# CHEM5630 - Programming for Data Analysis in the Physical Sciences
 
 ## Overview
 * This program takes a output file from gaussian after it has run NBO analysis (called our nbo.out file) on an optimized molecular model.  It can be run in terminal using `python outfile_extractor.py`. It will output two files to the directory of the original nbo.out file: a text file and a csv. It will also output print statements regarding the number of atoms in the model, as well as which unit of the model belongs to our ion (in this case, nitrate.)
